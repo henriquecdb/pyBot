@@ -63,6 +63,7 @@ async def list_members(ctx):
         member = await ctx.guild.fetch_member(user_id)
         if member is not None:
             bloco_texto += f"<@{member.id}> {membro['data_entrada']}\n"
+    bloco_texto += f"\n👥 Total: {len(membros)}"
     embed = discord.Embed(title="Nossos Membros", description=bloco_texto, color=7340032)
     embed.set_image(url="https://i.imgur.com/Ml56dgF.png")
     await ctx.send(embed=embed)
