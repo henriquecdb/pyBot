@@ -83,7 +83,25 @@ async def add_member(ctx, member_id: Option(str, required=True), entry_date: Opt
     await ctx.respond(f"Member {member_id} added with entry date {entry_date}", ephemeral=True)
 
 
-channels = [856178528285360189, 856185518684504074, 1018270570456035418, 1189596088584376340, 1194292103778406511, 1195761430478205050, 1195766388606898308, 1195765733712474274]
+@bot.slash_command()
+async def remove_member(ctx, member_id: Option(str, required=True)):
+    with open('MembrosDate.json', 'r') as f:
+        data = json.load(f)
+
+    # Encontre o membro na lista e remova
+    for i, member in enumerate(data['membros']):
+        if member['id'] == member_id:
+            del data['membros'][i]
+            break
+
+    with open('MembrosDate.json', 'w') as f:
+        json.dump(data, f, indent=4)
+
+    await ctx.respond(f"Member {member_id} removed", ephemeral=True)
+
+
+channels = [856178528285360189, 856185518684504074, 1018270570456035418, 1189596088584376340, 1194292103778406511,
+            1195761430478205050, 1195766388606898308, 1195765733712474274]
 
 
 @bot.event
