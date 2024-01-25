@@ -37,8 +37,8 @@ async def on_ready():
             "⚠️ Atenção membros em <@&1020234436236816394> marcados nessa mensagem.\n\nVocê tem 5 dias para reagir no ✅ abaixo. Caso contrário, será considerado inativo e perderá o cargo de membro.")
         await msg.add_reaction('\U00002705')
 
-    scheduler.add_job(scheduled_task1, 'cron', day='25', hour='3', minute='0', replace_existing=True)
-    scheduler.add_job(scheduled_task2, 'cron', day='27', hour='3', minute='0', replace_existing=True)
+    scheduler.add_job(scheduled_task1, 'cron', day='25', hour='3', minute='0', id="task1", replace_existing=True)
+    scheduler.add_job(scheduled_task2, 'cron', day='27', hour='3', minute='0', id="task2", replace_existing=True)
 
     # scheduler.print_jobs()
 
